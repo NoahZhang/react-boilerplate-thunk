@@ -45,51 +45,52 @@ Add a lot of feature.
 2.action
 
 ```javascript
-	import { APP } from '../constants/ActionTypes'
-	import { thunkAction } from '../utils/ActionHelper'
+import { APP } from '../constants/ActionTypes'
+import { thunkAction } from '../utils/ActionHelper'
 
-	const appFlow = {
-		request: () => action(APP.REQUEST),
-		success: (response) => action(APP.SUCCESS, {...response}),
-		failure: (error) => action(APP.FAILURE, {...error})
-	}
+const appFlow = {
+  request: () => action(APP.REQUEST),
+  success: (response) => action(APP.SUCCESS, {...response}),
+	failure: (error) => action(APP.FAILURE, {...error})
+}
 
-	export function createApp(app) {
-		return thunkAction.POST(appFlow, 'apps', {actionType: 'Create', data: app})
-	}
+export function createApp(app) {
+	return thunkAction.POST(appFlow, 'apps', {actionType: 'Create', data: app})
+}
 
-	export function fetchApp(app) {
-		return thunkAction.GET(appFlow, 'apps', {actionType: 'Query', data: app})
-	}
+export function fetchApp(app) {
+	return thunkAction.GET(appFlow, 'apps', {actionType: 'Query', data: app})
+}
 
-	export function updateApp(appId,app) {
-		return thunkAction.PUT(appFlow, 'apps/'+ appId, {actionType: 'Update', data: app})
-	}
+export function updateApp(appId,app) {
+	return thunkAction.PUT(appFlow, 'apps/'+ appId, {actionType: 'Update', data: app})
+}
 
-	export function delApps(id) {
-		return thunkAction.DELETE(appFlow, 'apps/'+id, {actionType: 'Delete'})
-	}
+export function delApps(id) {
+	return thunkAction.DELETE(appFlow, 'apps/'+id, {actionType: 'Delete'})
+}
 ```
 
 3.reducer
+
 ```javascript
-	import { APP } from '../constants/ActionTypes'
+import { APP } from '../constants/ActionTypes'
 
-	const initialState = {
-		type: 'app',
-		completed: false
-	}
+const initialState = {
+	type: 'app',
+	completed: false
+}
 
-	export default function app(state = initialState, action) {
-		switch(action.type) {
-			case APP.REQUEST:
-				return Object.assign({}, state, initialState);
-			case APP.SUCCESS:
-				return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
-			case APP.FAILURE:
-				return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
-			default:
-				return state;
-		}
+export default function app(state = initialState, action) {
+	switch(action.type) {
+		case APP.REQUEST:
+			return Object.assign({}, state, initialState);
+		case APP.SUCCESS:
+			return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
+		case APP.FAILURE:
+			return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
+		default:
+			return state;
 	}
+}
 ```   
