@@ -36,7 +36,7 @@ switchLanguage(lng) {
       ],
       "backend": {
         "loadPath": "/locales/{{lng}}/{{ns}}.json"
-     }
+      }
     }, (err, t) => {
       dispatch({ type: 'i18n', i18n: i18next })
     })
