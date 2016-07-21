@@ -32,7 +32,7 @@ switchLanguage(lng) {
 			"load": "languageOnly",
 			"ns": [
 			  "app",
-			  "common",
+        "common",
 			],
 			"backend": {
 				"loadPath": "/locales/{{lng}}/{{ns}}.json"
@@ -51,23 +51,23 @@ import { thunkAction } from '../utils/ActionHelper'
 const appFlow = {
   request: () => action(APP.REQUEST),
   success: (response) => action(APP.SUCCESS, {...response}),
-	failure: (error) => action(APP.FAILURE, {...error})
+  failure: (error) => action(APP.FAILURE, {...error})
 }
 
 export function createApp(app) {
-	return thunkAction.POST(appFlow, 'apps', {actionType: 'Create', data: app})
+  return thunkAction.POST(appFlow, 'apps', {actionType: 'Create', data: app})
 }
 
 export function fetchApp(app) {
-	return thunkAction.GET(appFlow, 'apps', {actionType: 'Query', data: app})
+  return thunkAction.GET(appFlow, 'apps', {actionType: 'Query', data: app})
 }
 
 export function updateApp(appId,app) {
-	return thunkAction.PUT(appFlow, 'apps/'+ appId, {actionType: 'Update', data: app})
+  return thunkAction.PUT(appFlow, 'apps/'+ appId, {actionType: 'Update', data: app})
 }
 
 export function delApps(id) {
-	return thunkAction.DELETE(appFlow, 'apps/'+id, {actionType: 'Delete'})
+  return thunkAction.DELETE(appFlow, 'apps/'+id, {actionType: 'Delete'})
 }
 ```
 
