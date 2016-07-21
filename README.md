@@ -84,13 +84,13 @@ const initialState = {
 export default function app(state = initialState, action) {
   switch(action.type) {
     case APP.REQUEST:
-		  return Object.assign({}, state, initialState);
+	    return Object.assign({}, state, initialState);
 	  case APP.SUCCESS:
-		  return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
+	    return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
 	  case APP.FAILURE:
-		  return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
+	    return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
 	  default:
-		  return state;
+	    return state;
   }
 }
 ```   
