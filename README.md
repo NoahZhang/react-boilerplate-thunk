@@ -19,28 +19,28 @@ Add a lot of feature.
 1.i18next initialize
 
 ```javascript
-  switchLanguage(lng) {
-		const { dispatch } = this.props
+switchLanguage(lng) {
+  const { dispatch } = this.props
 
-		i18next
-			.use(XHR)
-			.init({
-				"debug": false,
-				"lng": lng,
-				"keySeparator": false,
-				"fallbackLng": "zh",
-				"load": "languageOnly",
-				"ns": [
-					"app",
-					"common",
-				],
-				"backend": {
-					"loadPath": "/locales/{{lng}}/{{ns}}.json"
-				}
-			}, (err, t) => {
-				dispatch({ type: 'i18n', i18n: i18next })
-			})
-	}
+	i18next
+		.use(XHR)
+		.init({
+			"debug": false,
+			"lng": lng,
+			"keySeparator": false,
+			"fallbackLng": "zh",
+			"load": "languageOnly",
+			"ns": [
+			  "app",
+			  "common",
+			],
+			"backend": {
+				"loadPath": "/locales/{{lng}}/{{ns}}.json"
+			}
+		}, (err, t) => {
+			dispatch({ type: 'i18n', i18n: i18next })
+		})
+}
 ```
 2.action
 
@@ -77,20 +77,20 @@ export function delApps(id) {
 import { APP } from '../constants/ActionTypes'
 
 const initialState = {
-	type: 'app',
-	completed: false
+  type: 'app',
+  completed: false
 }
 
 export default function app(state = initialState, action) {
-	switch(action.type) {
-		case APP.REQUEST:
-			return Object.assign({}, state, initialState);
-		case APP.SUCCESS:
-			return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
-		case APP.FAILURE:
-			return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
-		default:
-			return state;
-	}
+  switch(action.type) {
+	  case APP.REQUEST:
+		  return Object.assign({}, state, initialState);
+	  case APP.SUCCESS:
+		  return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
+	  case APP.FAILURE:
+		  return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
+	  default:
+		  return state;
+  }
 }
 ```   
