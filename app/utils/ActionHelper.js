@@ -1,7 +1,4 @@
 import { API_ROOT } from 'config'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import TokenError from '../Common/components/TokenError'
 
 export const action = (type, payload = {}) => {
   return { type, ...payload }
@@ -87,20 +84,16 @@ function createThunkAction(method, flow, endpoint, param, isSafe = true) {
         dispatch(flow.success({
           actionType: param.actionType,
           result: json,
-          maxResults: response.headers.get('X-Content-Record-Total') || 0,
-          dataExists:response.headers.get('X-Content-System-User'),
+          maxResults: response.headers.get('X-Content-Record-Total') || 0
         }))
       })
       .catch(
-      error => {
-        if (error.message.indexOf('Token') >= 0 || (isSafe && !ACCESS_TOKEN)) {
-          ReactDOM.render(<TokenError />, document.getElementById('error'))
+        error => {
+          dispatch(flow.failure({
+            actionType: param.actionType,
+            error: error
+          }))
         }
-        dispatch(flow.failure({
-          actionType: param.actionType,
-          error: error
-        }))
-      }
       )
   }
 }
