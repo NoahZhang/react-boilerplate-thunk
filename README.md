@@ -27,19 +27,19 @@ switchLanguage(lng) {
     .init({
       "debug": false,
       "lng": lng,
-			"keySeparator": false,
-			"fallbackLng": "zh",
-			"load": "languageOnly",
-			"ns": [
-			  "app",
+      "keySeparator": false,
+      "fallbackLng": "zh",
+      "load": "languageOnly",
+      "ns": [
+        "app",
         "common",
-			],
-			"backend": {
-				"loadPath": "/locales/{{lng}}/{{ns}}.json"
-			}
-		}, (err, t) => {
-			dispatch({ type: 'i18n', i18n: i18next })
-		})
+      ],
+      "backend": {
+        "loadPath": "/locales/{{lng}}/{{ns}}.json"
+     }
+    }, (err, t) => {
+      dispatch({ type: 'i18n', i18n: i18next })
+    })
 }
 ```
 2.action
@@ -90,7 +90,7 @@ export default function app(state = initialState, action) {
     case APP.FAILURE:
       return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
     default:
-    return state;
+      return state;
   }
 }
 ```   
