@@ -22,9 +22,9 @@ Add a lot of feature.
 switchLanguage(lng) {
   const { dispatch } = this.props
 
-	i18next
-	  .use(XHR)
-	  .init({
+  i18next
+    .use(XHR)
+    .init({
       "debug": false,
       "lng": lng,
 			"keySeparator": false,
@@ -84,13 +84,13 @@ const initialState = {
 export default function app(state = initialState, action) {
   switch(action.type) {
     case APP.REQUEST:
-	    return Object.assign({}, state, initialState);
-	  case APP.SUCCESS:
-	    return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
-	  case APP.FAILURE:
-	    return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
-	  default:
-	    return state;
+      return Object.assign({}, state, initialState);
+    case APP.SUCCESS:
+      return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
+    case APP.FAILURE:
+      return Object.assign({}, state, { completed: true, actionType: action.actionType, error: action.error});
+    default:
+    return state;
   }
 }
 ```   
