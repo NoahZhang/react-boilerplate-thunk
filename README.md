@@ -23,10 +23,10 @@ switchLanguage(lng) {
   const { dispatch } = this.props
 
 	i18next
-		.use(XHR)
-		.init({
-			"debug": false,
-			"lng": lng,
+	  .use(XHR)
+	  .init({
+      "debug": false,
+      "lng": lng,
 			"keySeparator": false,
 			"fallbackLng": "zh",
 			"load": "languageOnly",
@@ -83,7 +83,7 @@ const initialState = {
 
 export default function app(state = initialState, action) {
   switch(action.type) {
-	  case APP.REQUEST:
+    case APP.REQUEST:
 		  return Object.assign({}, state, initialState);
 	  case APP.SUCCESS:
 		  return Object.assign({}, state, { completed: true, actionType: action.actionType, maxResults:action.maxResults});
