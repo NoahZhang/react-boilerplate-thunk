@@ -1,5 +1,5 @@
 This repo is a boilerplate for React-Redux-Thunk project.First version based on https://github.com/ruanyf/react-babel-webpack-boilerplate.
-Add a lot of feature.
+Add a lot of features.
 
 ## Features
 
