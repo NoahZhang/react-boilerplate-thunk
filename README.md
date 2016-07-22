@@ -3,7 +3,7 @@ Add a lot of features.
 
 ## Features
 
-- Equip with React 0.15, ES6 & Babel 6
+- Equip with React 15.0, ES6 & Babel 6
 - Support i18next and multi version browser
 - Thunk action boilerplate
 - Support javascript file hash suffix
